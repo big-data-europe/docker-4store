@@ -8,7 +8,7 @@ To deploy a single 4store node run
 
     docker run -d --name 4store bde2020/4store
 
-This will just deploy a container named "4store" that has 4store installed. Then run 4store commands using docker exec.
+This will just deploy a container named "4store" that has 4store installed and run the 4s-boss service. Then run 4store commands using docker exec.
 For example to setup a repository named "default" run
 
     docker exec 4store 4s-backend-setup default
