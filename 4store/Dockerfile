@@ -40,4 +40,4 @@ RUN mkdir /var/log/4store
 EXPOSE 6733
 
 # Define default command.
-CMD ["bash"] 
+CMD /usr/local/bin/4s-boss -D 
