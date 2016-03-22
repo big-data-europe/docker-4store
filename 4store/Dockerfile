@@ -20,18 +20,16 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean \ 
     && rm -rf /var/lib/apt/lists/*
 
-# Install 4store
-RUN git clone https://github.com/garlik/4store.git
-WORKDIR 4store
-RUN ./autogen.sh
-RUN ./configure
-RUN make
-RUN make install
-RUN make clean
-
-# clean up
-WORKDIR /
-RUN rm -rf 4store
+# Install 4store and clean up
+RUN git clone https://github.com/garlik/4store.git \
+    && cd 4store \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && make install \
+    && make clean \
+    && cd .. \
+    && rm -rf 4store
 
 # create directory for 4store logs
 RUN mkdir /var/log/4store
