@@ -23,6 +23,7 @@ RUN apt-get update && apt-get install -y \
 # Install 4store and clean up
 RUN git clone https://github.com/garlik/4store.git \
     && cd 4store \
+    && git checkout v1.1.5 \
     && ./autogen.sh \
     && ./configure \
     && make \
