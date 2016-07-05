@@ -34,4 +34,4 @@ For example if you have a data dump in /home/user/dumps/dump.nt you can create a
     docker run -d --name 4store1 bde2020/4store
     docker run -d --name 4store2 bde2020/4store
     docker run -d --name 4store-master --link 4store1:4store1 --link 4store2:4store2 -e STORE_NODES="4store1;4store2" -v /home/user/dumps:/data bde2020/4store-master
-    docker exec 4store-master 4s-import 4s-import default /data/dump.nt -v -a -f ntriples
+    docker exec 4store-master 4s-import default /data/dump.nt -v -a -f ntriples
