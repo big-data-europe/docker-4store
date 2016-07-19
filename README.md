@@ -24,14 +24,16 @@ To deploy a 4store cluster start by deploying the 4store datanodes. For example 
     docker run -d --name 4store1 bde2020/4store
     docker run -d --name 4store2 bde2020/4store
 
-Then deploy the 4store master node. This node uses 4s-admin and 4s-boss to add the datanodes to the cluster and creates a repository named "default".
+Then deploy the 4store master node. This node uses 4s-admin and 4s-boss to add the datanodes to the cluster.
 
     docker run -d --link 4store1:4store1 --link 4store2:4store2 -e STORE_NODES="4store1;4store2" bde2020/4store-master 
 
 Then as in single node mode you can run other 4store commands using docker exec.
-For example if you have a data dump in /home/user/dumps/dump.nt you can create a 2 node cluster and import the dump by running
+For example if you have a data dump in /home/user/dumps/dump.nt you can create a 2 node cluster, start a store named "default", start it and import the dump by running
 
     docker run -d --name 4store1 bde2020/4store
     docker run -d --name 4store2 bde2020/4store
     docker run -d --name 4store-master --link 4store1:4store1 --link 4store2:4store2 -e STORE_NODES="4store1;4store2" -v /home/user/dumps:/data bde2020/4store-master
+    docker exec 4store-master 4s-admin create-store default
+    docker exec 4store-master start-stores -a
     docker exec 4store-master 4s-import default /data/dump.nt -v -a -f ntriples
