@@ -38,4 +38,16 @@ For example if you have a data dump in /home/user/dumps/dump.nt you can create a
     docker exec 4store-master start-stores -a
     docker exec 4store-master 4s-import default /data/dump.nt -v -a -f ntriples
 
+## Docker compose
+
+You can also use docker compose to deploy 4store.  To deploy a single node use the `docker-compose.yml` file. You can deploy a cluster with two nodes using the `docker-compose-cluster.yml` file. To add more nodes edit the `docker-compose-cluster.yml` file, add a new datanode block and add its service name in the `STORE_NODES` variable.
+
+To deploy a single node issue
+
+    docker-compose up -d
+
+To deploy a cluster with two node issue
+
+    docker-compose -f docker-compose-cluster.yml up -d
+
 
