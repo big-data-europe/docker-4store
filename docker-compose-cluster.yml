@@ -3,13 +3,13 @@ version: '2'
 services:
   
   4store1:
-    image: bde2020/4store
+    image: bde2020/4store:1.1.5
 
   4store2:
-    image: bde2020/4store
+    image: bde2020/4store:1.1.5
 
   4store-master:
-    image: bde2020/4store-master
+    image: bde2020/4store-master:1.1.5
     environment:
       - STORE_NODES=4store1;4store2;
     depends_on:
