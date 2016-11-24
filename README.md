@@ -37,3 +37,5 @@ For example if you have a data dump in /home/user/dumps/dump.nt you can create a
     docker exec 4store-master 4s-admin create-store default
     docker exec 4store-master start-stores -a
     docker exec 4store-master 4s-import default /data/dump.nt -v -a -f ntriples
+
+
