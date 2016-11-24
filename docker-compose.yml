@@ -1,0 +1,6 @@
+version: '2'                                                                                                                                                                                                
+
+services:
+
+  4store:                                                                                                                                                                                                                                  
+    image: bde2020/4store                                                                                                                                                                                         
